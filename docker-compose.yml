@@ -1,0 +1,37 @@
+version: "3.9"
+services:
+
+  db:
+    container_name: mysql
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=dbroot
+      - MYSQL_DATABASE=demo
+      - MYSQL_USER=dbuser
+      - MYSQL_PASSWORD=dbpassword
+      - MYSQL_ROOT_HOST=%
+      - TZ=UTC
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - overlay
+
+  flyway:
+    image: redgate/flyway
+    command: -url=jdbc:mysql://db:3306 -schemas=demo -user=dbuser -password=dbpassword migrate
+    environment:
+      - FLYWAY_CONNECT_RETRIES=300
+    volumes:
+      - ./sql:/flyway/sql
+    links:
+      - db
+    networks:
+      - overlay
+
+volumes:
+  mysql_data:
+
+networks:
+  overlay:
