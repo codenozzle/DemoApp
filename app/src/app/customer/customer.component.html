@@ -1,13 +1,13 @@
 <div>
-  <h2>Customers</h2>
-  <div *ngFor="let customer of customers">
-    <p>{{ customer.name }} ({{ customer.email }})</p>
-  </div>
+    <h2>Customers</h2>
+    <div *ngFor="let customer of customers">
+        <p>{{ customer.name }} ({{ customer.email }})</p>
+    </div>
 
-  <h3>Add New Customer</h3>
-  <form (ngSubmit)="createCustomer()">
-    <label>Name: <input [(ngModel)]="newCustomer.name" name="name"></label>
-    <label>Email: <input [(ngModel)]="newCustomer.email" name="email"></label>
-    <button type="submit">Add Customer</button>
-  </form>
+    <h3>Add New Customer</h3>
+    <form (ngSubmit)="createCustomer()">
+        <label>Name: <input [(ngModel)]="newCustomer.name" name="name"></label>
+        <label>Email: <input [(ngModel)]="newCustomer.email" name="email"></label>
+        <button type="submit">Add Customer</button>
+    </form>
 </div>
