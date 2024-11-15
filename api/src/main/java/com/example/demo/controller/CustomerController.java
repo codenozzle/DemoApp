@@ -1,10 +1,11 @@
-package com.example.demo.customer;
+package com.example.demo.controller;
 
+import com.example.demo.model.Customer;
+import com.example.demo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -14,8 +15,8 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping
-    public ResponseEntity<List<String>> getAllCustomers() {
-        return ResponseEntity.ok(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
+    public List<Customer> getCustomers() {
+        return customerService.getAllCustomers();
     }
 
     @PostMapping

@@ -1,9 +1,6 @@
-package com.example.demo.account;
+package com.example.demo.model;
 
-import com.example.demo.customer.Customer;
-import com.example.demo.transaction.Transaction;
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
@@ -16,9 +13,9 @@ public class Account {
 
     @ManyToMany
     @JoinTable(
-            name = "customer_account",
-            joinColumns = @JoinColumn(name = "account_id"),
-            inverseJoinColumns = @JoinColumn(name = "customer_id")
+        name = "customer_account",
+        joinColumns = @JoinColumn(name = "account_id"),
+        inverseJoinColumns = @JoinColumn(name = "customer_id")
     )
     private List<Customer> customers;
 

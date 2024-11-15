@@ -1,8 +1,6 @@
-package com.example.demo.transaction;
+package com.example.demo.model;
 
-import com.example.demo.account.Account;
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,7 +9,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Double amount;
-    private String type; // e.g., "CREDIT" or "DEBIT"
+    private String type;
     private LocalDateTime timestamp;
 
     @ManyToOne
