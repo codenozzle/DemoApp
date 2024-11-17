@@ -1,25 +1,3 @@
--- Customers
-INSERT INTO customer (id, name) VALUES (1, 'John Smith');
-INSERT INTO customer (id, name) VALUES (2, 'Jane Smith');
-INSERT INTO customer (id, name) VALUES (3, 'Michael Johnson');
-INSERT INTO customer (id, name) VALUES (4, 'Emily Johnson');
-INSERT INTO customer (id, name) VALUES (5, 'David Brown');
-INSERT INTO customer (id, name) VALUES (6, 'Sarah Brown');
-INSERT INTO customer (id, name) VALUES (7, 'James Taylor');
-INSERT INTO customer (id, name) VALUES (8, 'Laura Taylor');
-INSERT INTO customer (id, name) VALUES (9, 'Robert Wilson');
-INSERT INTO customer (id, name) VALUES (10, 'Anna Wilson');
-INSERT INTO customer (id, name) VALUES (11, 'Chris Davis');
-INSERT INTO customer (id, name) VALUES (12, 'Jessica Davis');
-INSERT INTO customer (id, name) VALUES (13, 'Andrew Lee');
-INSERT INTO customer (id, name) VALUES (14, 'Rachel Lee');
-INSERT INTO customer (id, name) VALUES (15, 'Paul Harris');
-INSERT INTO customer (id, name) VALUES (16, 'Olivia Harris');
-INSERT INTO customer (id, name) VALUES (17, 'Ethan Martinez');
-INSERT INTO customer (id, name) VALUES (18, 'Sophia Martinez');
-INSERT INTO customer (id, name) VALUES (19, 'Benjamin Clark');
-INSERT INTO customer (id, name) VALUES (20, 'Emma Clark');
-
 -- Credit card accounts
 INSERT INTO account (id, credit_card_number, credit_card_type, balance, spending_limit)
 VALUES (1, '4532-1234-5678-9123', 'Visa', 5000, 10000);
@@ -101,6 +79,97 @@ INSERT INTO account (id, credit_card_number, credit_card_type, balance, spending
 VALUES (39, '4929-8765-3333-9999', 'MasterCard', 7000, 11000);
 INSERT INTO account (id, credit_card_number, credit_card_type, balance, spending_limit)
 VALUES (40, '6011-8888-7777-6666', 'Discover', 4500, 10000);
+
+-- Customers with customer account associations
+INSERT INTO customer (id, name) VALUES (1, 'John Smith');
+INSERT INTO customer (id, name) VALUES (2, 'Jane Smith');
+INSERT INTO customer_account (customer_id, account_id) VALUES (1, 1);
+INSERT INTO customer_account (customer_id, account_id) VALUES (1, 2);
+INSERT INTO customer_account (customer_id, account_id) VALUES (2, 2);
+INSERT INTO customer_account (customer_id, account_id) VALUES (1, 3);
+INSERT INTO customer_account (customer_id, account_id) VALUES (2, 3);
+INSERT INTO customer_account (customer_id, account_id) VALUES (2, 4);
+
+INSERT INTO customer (id, name) VALUES (3, 'Michael Johnson');
+INSERT INTO customer (id, name) VALUES (4, 'Emily Johnson');
+INSERT INTO customer_account (customer_id, account_id) VALUES (3, 5);
+INSERT INTO customer_account (customer_id, account_id) VALUES (3, 6);
+INSERT INTO customer_account (customer_id, account_id) VALUES (4, 6);
+INSERT INTO customer_account (customer_id, account_id) VALUES (3, 7);
+INSERT INTO customer_account (customer_id, account_id) VALUES (4, 7);
+INSERT INTO customer_account (customer_id, account_id) VALUES (4, 8);
+
+INSERT INTO customer (id, name) VALUES (5, 'David Brown');
+INSERT INTO customer (id, name) VALUES (6, 'Sarah Brown');
+INSERT INTO customer_account (customer_id, account_id) VALUES (5, 9);
+INSERT INTO customer_account (customer_id, account_id) VALUES (5, 10);
+INSERT INTO customer_account (customer_id, account_id) VALUES (6, 10);
+INSERT INTO customer_account (customer_id, account_id) VALUES (5, 11);
+INSERT INTO customer_account (customer_id, account_id) VALUES (6, 11);
+INSERT INTO customer_account (customer_id, account_id) VALUES (6, 12);
+
+INSERT INTO customer (id, name) VALUES (7, 'James Taylor');
+INSERT INTO customer (id, name) VALUES (8, 'Laura Taylor');
+INSERT INTO customer_account (customer_id, account_id) VALUES (7, 13);
+INSERT INTO customer_account (customer_id, account_id) VALUES (7, 14);
+INSERT INTO customer_account (customer_id, account_id) VALUES (8, 14);
+INSERT INTO customer_account (customer_id, account_id) VALUES (7, 15);
+INSERT INTO customer_account (customer_id, account_id) VALUES (8, 15);
+INSERT INTO customer_account (customer_id, account_id) VALUES (8, 16);
+
+INSERT INTO customer (id, name) VALUES (9, 'Robert Wilson');
+INSERT INTO customer (id, name) VALUES (10, 'Anna Wilson');
+INSERT INTO customer_account (customer_id, account_id) VALUES (9, 17);
+INSERT INTO customer_account (customer_id, account_id) VALUES (9, 18);
+INSERT INTO customer_account (customer_id, account_id) VALUES (10, 18);
+INSERT INTO customer_account (customer_id, account_id) VALUES (9, 19);
+INSERT INTO customer_account (customer_id, account_id) VALUES (10, 19);
+INSERT INTO customer_account (customer_id, account_id) VALUES (10, 20);
+
+INSERT INTO customer (id, name) VALUES (11, 'Chris Davis');
+INSERT INTO customer (id, name) VALUES (12, 'Jessica Davis');
+INSERT INTO customer_account (customer_id, account_id) VALUES (11, 21);
+INSERT INTO customer_account (customer_id, account_id) VALUES (11, 22);
+INSERT INTO customer_account (customer_id, account_id) VALUES (12, 22);
+INSERT INTO customer_account (customer_id, account_id) VALUES (11, 23);
+INSERT INTO customer_account (customer_id, account_id) VALUES (12, 23);
+INSERT INTO customer_account (customer_id, account_id) VALUES (12, 24);
+
+INSERT INTO customer (id, name) VALUES (13, 'Andrew Lee');
+INSERT INTO customer (id, name) VALUES (14, 'Rachel Lee');
+INSERT INTO customer_account (customer_id, account_id) VALUES (13, 25);
+INSERT INTO customer_account (customer_id, account_id) VALUES (13, 26);
+INSERT INTO customer_account (customer_id, account_id) VALUES (14, 26);
+INSERT INTO customer_account (customer_id, account_id) VALUES (13, 27);
+INSERT INTO customer_account (customer_id, account_id) VALUES (14, 27);
+INSERT INTO customer_account (customer_id, account_id) VALUES (14, 28);
+
+INSERT INTO customer (id, name) VALUES (15, 'Paul Harris');
+INSERT INTO customer (id, name) VALUES (16, 'Olivia Harris');
+INSERT INTO customer_account (customer_id, account_id) VALUES (15, 29);
+INSERT INTO customer_account (customer_id, account_id) VALUES (15, 30);
+INSERT INTO customer_account (customer_id, account_id) VALUES (16, 30);
+INSERT INTO customer_account (customer_id, account_id) VALUES (15, 31);
+INSERT INTO customer_account (customer_id, account_id) VALUES (16, 31);
+INSERT INTO customer_account (customer_id, account_id) VALUES (16, 32);
+
+INSERT INTO customer (id, name) VALUES (17, 'Ethan Martinez');
+INSERT INTO customer (id, name) VALUES (18, 'Sophia Martinez');
+INSERT INTO customer_account (customer_id, account_id) VALUES (17, 33);
+INSERT INTO customer_account (customer_id, account_id) VALUES (17, 34);
+INSERT INTO customer_account (customer_id, account_id) VALUES (18, 34);
+INSERT INTO customer_account (customer_id, account_id) VALUES (17, 35);
+INSERT INTO customer_account (customer_id, account_id) VALUES (18, 35);
+INSERT INTO customer_account (customer_id, account_id) VALUES (18, 36);
+
+INSERT INTO customer (id, name) VALUES (19, 'Benjamin Clark');
+INSERT INTO customer (id, name) VALUES (20, 'Emma Clark');
+INSERT INTO customer_account (customer_id, account_id) VALUES (19, 37);
+INSERT INTO customer_account (customer_id, account_id) VALUES (19, 38);
+INSERT INTO customer_account (customer_id, account_id) VALUES (20, 38);
+INSERT INTO customer_account (customer_id, account_id) VALUES (19, 39);
+INSERT INTO customer_account (customer_id, account_id) VALUES (20, 39);
+INSERT INTO customer_account (customer_id, account_id) VALUES (20, 40);
 
 -- Credit card transactions
 INSERT INTO transaction (id, account_id, amount, description, timestamp) VALUES (1, 23, 1708.45, 'Grocery Purchase', '2024-06-13 04:34:33');
@@ -303,7 +372,3 @@ INSERT INTO transaction (id, account_id, amount, description, timestamp) VALUES 
 INSERT INTO transaction (id, account_id, amount, description, timestamp) VALUES (198, 20, 1398.5, 'Restaurant Payment', '2024-10-03 04:34:33');
 INSERT INTO transaction (id, account_id, amount, description, timestamp) VALUES (199, 20, 1661.61, 'Restaurant Payment', '2024-05-23 04:34:33');
 INSERT INTO transaction (id, account_id, amount, description, timestamp) VALUES (200, 3, 1395.92, 'Home Improvement', '2024-07-21 04:34:33');
-
-
-
-
