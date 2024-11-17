@@ -7,7 +7,7 @@
   <h3>Add New Account</h3>
   <form (ngSubmit)="createAccount()">
     <label>Account Number: <input [(ngModel)]="newAccount.accountNumber" name="accountNumber"></label>
-    <label>Balance: <input [(ngModel)]="newAccount.balance" name="balance" type="number"></label>
-    <button type="submit">Add Account</button>
+    <label>Balance: <input [(ngModel)]="newAccount.balance" name="balance" description="number"></label>
+    <button description="submit">Add Account</button>
   </form>
 </div>

@@ -10,7 +10,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Double amount;
-    private String type;
+    private String description;
     private LocalDateTime timestamp;
 
     @ManyToOne
@@ -34,12 +34,12 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public String getType() {
-        return type;
+    public String getDescription() {
+        return description;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDateTime getTimestamp() {

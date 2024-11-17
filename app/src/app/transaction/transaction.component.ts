@@ -9,7 +9,7 @@ import { Transaction } from '../models/transaction.model';
 })
 export class TransactionComponent implements OnInit {
   transactions: Transaction[] = [];
-  newTransaction: Transaction = { id: 0, amount: 0, type: '', timestamp: '', account: null };
+  newTransaction: Transaction = { id: 0, amount: 0, description: '', timestamp: '', account: null };
 
   constructor(private apiService: ApiService) {}
 
@@ -26,7 +26,7 @@ export class TransactionComponent implements OnInit {
   createTransaction(): void {
     this.apiService.createTransaction(this.newTransaction).subscribe(transaction => {
       this.transactions.push(transaction);
-      this.newTransaction = { id: 0, amount: 0, type: '', timestamp: '', account: null };
+      this.newTransaction = { id: 0, amount: 0, description: '', timestamp: '', account: null };
     });
   }
 }

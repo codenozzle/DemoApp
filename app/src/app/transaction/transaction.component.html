@@ -1,14 +1,14 @@
 <div>
   <h2>Transactions</h2>
   <div *ngFor="let transaction of transactions">
-    <p>Type: {{ transaction.type }} - Amount: {{ transaction.amount }} - Timestamp: {{ transaction.timestamp }}</p>
+    <p>Type: {{ transaction.description }} - Amount: {{ transaction.amount }} - Timestamp: {{ transaction.timestamp }}</p>
   </div>
 
   <h3>Add New Transaction</h3>
   <form (ngSubmit)="createTransaction()">
-    <label>Type: <input [(ngModel)]="newTransaction.type" name="type"></label>
-    <label>Amount: <input [(ngModel)]="newTransaction.amount" name="amount" type="number"></label>
-    <label>Timestamp: <input [(ngModel)]="newTransaction.timestamp" name="timestamp" type="datetime-local"></label>
-    <button type="submit">Add Transaction</button>
+    <label>Type: <input [(ngModel)]="newTransaction.description" name="description"></label>
+    <label>Amount: <input [(ngModel)]="newTransaction.amount" name="amount" description="number"></label>
+    <label>Timestamp: <input [(ngModel)]="newTransaction.timestamp" name="timestamp" description="datetime-local"></label>
+    <button description="submit">Add Transaction</button>
   </form>
 </div>

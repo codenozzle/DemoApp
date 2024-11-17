@@ -18,5 +18,4 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
-    // Additional methods for retrieving customers, etc.
 }

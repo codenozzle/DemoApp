@@ -1,24 +1,14 @@
-CREATE TABLE user (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username varchar(50) NOT NULL,
-    email varchar(50) NOT NULL,
-    password varchar(255) NOT NULL,
-    role int null,
-    constraint username
-        unique (username)
-);
-
 CREATE TABLE customer (
       id INT AUTO_INCREMENT PRIMARY KEY,
-      name VARCHAR(255) NOT NULL,
-      email VARCHAR(255) NOT NULL
+      name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE account (
      id INT AUTO_INCREMENT PRIMARY KEY,
-     account_number VARCHAR(20) NOT NULL,
-     name VARCHAR(255) NOT NULL,
-     balance DECIMAL(15, 2) NOT NULL
+     credit_card_number VARCHAR(20) NOT NULL,
+     credit_card_type VARCHAR(255) NOT NULL,
+     balance DECIMAL(15, 2) NOT NULL,
+     spending_limit DECIMAL(15, 2) NOT NULL
 );
 
 CREATE TABLE transaction (

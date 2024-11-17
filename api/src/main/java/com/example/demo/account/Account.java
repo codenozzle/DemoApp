@@ -10,8 +10,10 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String accountNumber;
+    private String creditCardNumber;
+    private String creditCardType;
     private Double balance;
+    private Double spendingLimit;
 
     @ManyToMany
     @JoinTable(
@@ -31,14 +33,6 @@ public class Account {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
     }
 
     public Double getBalance() {
@@ -63,5 +57,29 @@ public class Account {
 
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
+    }
+
+    public Double getSpendingLimit() {
+        return spendingLimit;
+    }
+
+    public void setSpendingLimit(Double spendingLimit) {
+        this.spendingLimit = spendingLimit;
+    }
+
+    public String getCreditCardType() {
+        return creditCardType;
+    }
+
+    public void setCreditCardType(String creditCardType) {
+        this.creditCardType = creditCardType;
+    }
+
+    public String getCreditCardNumber() {
+        return creditCardNumber;
+    }
+
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
     }
 }
