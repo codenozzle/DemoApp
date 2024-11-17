@@ -1,1 +1,13 @@
-<p>account works!</p>
+<div>
+  <h2>Accounts</h2>
+  <div *ngFor="let account of accounts">
+    <p>Account Number: {{ account.accountNumber }} - Balance: {{ account.balance }}</p>
+  </div>
+
+  <h3>Add New Account</h3>
+  <form (ngSubmit)="createAccount()">
+    <label>Account Number: <input [(ngModel)]="newAccount.accountNumber" name="accountNumber"></label>
+    <label>Balance: <input [(ngModel)]="newAccount.balance" name="balance" type="number"></label>
+    <button type="submit">Add Account</button>
+  </form>
+</div>
