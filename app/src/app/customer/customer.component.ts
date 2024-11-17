@@ -5,7 +5,7 @@ import { Customer } from '../models/customer.model';
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.css']
+  styleUrls: ['./customer.component.scss']
 })
 export class CustomerComponent implements OnInit {
   customers: Customer[] = [];
