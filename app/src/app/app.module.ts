@@ -13,7 +13,7 @@ import { TransactionComponent } from './transaction/transaction.component';
 import {FormsModule} from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import {BaseChartDirective} from "ng2-charts";
+import {NgChartsModule} from "ng2-charts";
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import {BaseChartDirective} from "ng2-charts";
     MatIconModule,
     MatExpansionModule,
     MatButtonModule,
-    BaseChartDirective
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
