@@ -1,5 +1,6 @@
-package com.example.demo.model;
+package com.example.demo.customer;
 
+import com.example.demo.account.Account;
 import jakarta.persistence.*;
 import java.util.List;
 
