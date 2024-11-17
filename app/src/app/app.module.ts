@@ -14,6 +14,8 @@ import {FormsModule} from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {NgChartsModule} from "ng2-charts";
+import {MatCard, MatCardContent} from "@angular/material/card";
+import {MatGridList, MatGridTile} from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
@@ -33,7 +35,11 @@ import {NgChartsModule} from "ng2-charts";
     MatIconModule,
     MatExpansionModule,
     MatButtonModule,
-    NgChartsModule
+    NgChartsModule,
+    MatCard,
+    MatCardContent,
+    MatGridList,
+    MatGridTile
   ],
   providers: [],
   bootstrap: [AppComponent]
