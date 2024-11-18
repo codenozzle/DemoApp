@@ -14,7 +14,7 @@ import {FormsModule} from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {NgChartsModule} from "ng2-charts";
-import {MatCard, MatCardContent} from "@angular/material/card";
+import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
 import {
   MatCell,
@@ -60,7 +60,8 @@ import {MatPaginator} from "@angular/material/paginator";
     MatRow,
     MatRowDef,
     MatHeaderRowDef,
-    MatPaginator
+    MatPaginator,
+    MatCardHeader
   ],
   providers: [],
   bootstrap: [AppComponent]

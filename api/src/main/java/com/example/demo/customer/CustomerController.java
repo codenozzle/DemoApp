@@ -22,6 +22,11 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.createCustomer(customer));
     }
 
+    @PutMapping(path = "/{customerId}")
+    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer, @PathVariable Long customerId) {
+        return ResponseEntity.ok(customerService.updateCustomer(customerId, customer));
+    }
+
     @GetMapping(path = "/history")
     public List<CustomerHistory> getCustomerHistory() {
         return customerService.getCustomerHistory();

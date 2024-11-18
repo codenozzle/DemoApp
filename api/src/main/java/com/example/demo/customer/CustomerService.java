@@ -33,4 +33,9 @@ public class CustomerService {
         return dashboardDAO.getTransactionCountHistory();
     }
 
+    public Customer updateCustomer(Long customerId, Customer customer) {
+        Customer customerToUpdate = customerRepository.getReferenceById(customerId);
+        customerToUpdate.setName(customer.getName());
+        return customerRepository.save(customerToUpdate);
+    }
 }

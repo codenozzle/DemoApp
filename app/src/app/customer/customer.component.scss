@@ -1,0 +1,13 @@
+.customer-form-container {
+  width: 500px;
+}
+.customer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+.form-buttons {
+  display: flex;
+  gap: 16px;
+}
