@@ -15,4 +15,12 @@ Please prepare a presentation on your implementation; this can include a demo, c
 The number and types of attributes for each object are up to you.
 
 ### Solution
+#### Technologies used
+* Docker Compose
+* Springboot
+* Angular 18
+* MySQL 8
+* Hibernate and JPA
+
+#### Database Design
 ![Database Diagram](./artifacts/database-diagram.png)
