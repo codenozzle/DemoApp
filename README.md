@@ -17,10 +17,18 @@ The number and types of attributes for each object are up to you.
 ### Solution
 #### Technologies used
 * Docker Compose
+  * MySQL 8
+  * Flyway 10
 * Springboot
+  * Java 17
+  * Hibernate 6
+  * JPA 2
+  * JDBC 6
 * Angular 18
-* MySQL 8
-* Hibernate and JPA
+  * Material Design
+  * chart.js
+  * ng-charts
+  * axios
 
 #### Database Design
 ![Database Diagram](./artifacts/database-diagram.png)
