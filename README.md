@@ -13,3 +13,6 @@ Please prepare a presentation on your implementation; this can include a demo, c
 * One account to one transaction relationship
 
 The number and types of attributes for each object are up to you.
+
+### Solution
+![Database Diagram](./artifacts/database-diagram.png)
