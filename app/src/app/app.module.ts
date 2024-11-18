@@ -16,6 +16,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {NgChartsModule} from "ng2-charts";
 import {MatCard, MatCardContent} from "@angular/material/card";
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
+import {
+  MatCell,
+  MatCellDef,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef,
+  MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
+  MatTable
+} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -39,7 +49,18 @@ import {MatGridList, MatGridTile} from "@angular/material/grid-list";
     MatCard,
     MatCardContent,
     MatGridList,
-    MatGridTile
+    MatGridTile,
+    MatTable,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderCellDef,
+    MatCell,
+    MatCellDef,
+    MatHeaderRow,
+    MatRow,
+    MatRowDef,
+    MatHeaderRowDef,
+    MatPaginator
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { ChartData, ChartType } from 'chart.js';
-import { Customer } from '../models/customer.model';
-import { Account } from '../models/account.model';
-import { Transaction } from '../models/transaction.model';
+import {ChartData} from 'chart.js';
+import {TransactionAmountHistory} from "../models/transactionAmountHistory.model";
+import {TransactionCountHistory} from "../models/transactionCountHistory.model";
 
 @Component({
   selector: 'app-dashboard',
@@ -11,66 +10,52 @@ import { Transaction } from '../models/transaction.model';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  customers: Customer[] = [];
-  accounts: Account[] = [];
-  transactions: Transaction[] = [];
-
-  public customerChartData: ChartData<'doughnut'>;
-  public accountChartData: ChartData<'bar'>;
-  public transactionChartData: ChartData<'line'>;
-
+  transactionAmountHistory: TransactionAmountHistory[] = [];
+  transactionCountHistory: TransactionCountHistory[] = [];
+  public transactionAmountHistoryChartData: ChartData<'bar'>;
+  public transactionCountHistoryChartData: ChartData<'bar'>;
+  public barChartType = 'bar' as const;
   public chartOptions = {
     responsive: true,
   };
 
   constructor(private apiService: ApiService) {
-    this.customerChartData = {
+    this.transactionAmountHistoryChartData = {
       labels: [],
       datasets: [{ data: [] }]
     };
-    this.accountChartData = {
-      labels: [],
-      datasets: [{ data: [] }]
-    };
-    this.transactionChartData = {
+
+    this.transactionCountHistoryChartData = {
       labels: [],
       datasets: [{ data: [] }]
     };
   }
 
   ngOnInit(): void {
-    this.getCustomers();
-    this.getAccounts();
-    this.getTransactions();
+    this.getCustomerAmountHistory();
+    this.getCustomerCountHistory();
   }
 
-  getCustomers(): void {
-    this.apiService.getCustomers().subscribe(customers => {
-      this.customers = customers;
-      this.customerChartData = {
-        labels: ['Total Customers'],
-        datasets: [{ data: [customers.length], backgroundColor: ['#42A5F5'] }]
+  getCustomerAmountHistory(): void {
+    this.apiService.getTransactionAmountHistory().subscribe(transactionAmountHistory => {
+      this.transactionAmountHistory = transactionAmountHistory;
+      this.transactionAmountHistoryChartData = {
+        labels: transactionAmountHistory.map(history => history.creditCardType),
+        datasets: [{ data: transactionAmountHistory.map(history => history.amount), label: 'Spend by Card Type', backgroundColor: ['#66BB6A'] }]
       };
-    });
+    })
   }
 
-  getAccounts(): void {
-    this.apiService.getAccounts().subscribe(accounts => {
-      this.accounts = accounts;
-      this.accountChartData = {
-        labels: accounts.map(account => account.accountNumber),
-        datasets: [{ data: accounts.map(account => account.balance), label: 'Account Balances', backgroundColor: ['#66BB6A'] }]
+  getCustomerCountHistory(): void {
+    this.apiService.getTransactionCountHistory().subscribe(transactionCountHistory => {
+      this.transactionCountHistory = transactionCountHistory;
+      this.transactionCountHistoryChartData = {
+        labels: transactionCountHistory.map(history => history.creditCardType),
+        datasets: [{ data: transactionCountHistory.map(history => history.transactionCount), label: 'Number of Transactions by Card Type', backgroundColor: ['#a366bb'] }]
       };
-    });
+    })
   }
 
-  getTransactions(): void {
-    this.apiService.getTransactions().subscribe(transactions => {
-      this.transactions = transactions;
-      this.transactionChartData = {
-        labels: transactions.map(transaction => transaction.timestamp),
-        datasets: [{ data: transactions.map(transaction => transaction.amount), label: 'Transaction Amounts', borderColor: '#FFA726', fill: false }]
-      };
-    });
-  }
+
+
 }

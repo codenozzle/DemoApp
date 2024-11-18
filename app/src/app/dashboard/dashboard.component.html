@@ -1,26 +1,22 @@
 <div>
   <h2>Dashboard</h2>
-
-  <mat-grid-list cols="3">
+  <mat-grid-list cols="2">
     <mat-grid-tile>
-      <canvas baseChart
-              [data]="customerChartData"
-              [options]="chartOptions"
-              chartType="doughnut">
+      <canvas
+        baseChart
+        [data]="transactionAmountHistoryChartData"
+        [options]="chartOptions"
+        [type]="barChartType"
+      >
       </canvas>
     </mat-grid-tile>
     <mat-grid-tile>
-      <canvas baseChart
-              [data]="accountChartData"
-              [options]="chartOptions"
-              chartType="bar">
-      </canvas>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <canvas baseChart
-              [data]="transactionChartData"
-              [options]="chartOptions"
-              chartType="line">
+      <canvas
+        baseChart
+        [data]="transactionCountHistoryChartData"
+        [options]="chartOptions"
+        [type]="barChartType"
+      >
       </canvas>
     </mat-grid-tile>
   </mat-grid-list>
