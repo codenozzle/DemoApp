@@ -11,8 +11,8 @@ public class Customer {
     private Long id;
     private String name;
 
-    @ManyToMany(mappedBy = "customers")
-    private List<Account> accounts;
+    //@ManyToMany(mappedBy = "customers", fetch = FetchType.LAZY)
+    //private List<Account> accounts;
 
     // Getters, Setters, Constructors
     public Long getId() {
@@ -31,11 +31,11 @@ public class Customer {
         this.name = name;
     }
 
-    public List<Account> getAccounts() {
+    /*public List<Account> getAccounts() {
         return accounts;
     }
 
     public void setAccounts(List<Account> accounts) {
         this.accounts = accounts;
-    }
+    }*/
 }

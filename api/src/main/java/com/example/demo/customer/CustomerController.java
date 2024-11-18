@@ -21,4 +21,19 @@ public class CustomerController {
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
         return ResponseEntity.ok(customerService.createCustomer(customer));
     }
+
+    @GetMapping(path = "/history")
+    public List<CustomerHistory> getCustomerHistory() {
+        return customerService.getCustomerHistory();
+    }
+
+    @GetMapping(path = "/countHistory")
+    public List<TransactionCountHistory> getTransactionCountHistory() {
+        return customerService.getTransactionCountHistory();
+    }
+
+    @GetMapping(path = "/amountHistory")
+    public List<TransactionAmountHistory> getTransactionAmountHistory() {
+        return customerService.getTransactionAmountHistory();
+    }
 }
