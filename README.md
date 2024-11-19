@@ -19,15 +19,15 @@ The number and types of attributes for each object are up to you.
 * Docker Compose
   * MySQL 8
   * Flyway 10
-* Springboot
+* Springboot 3
   * Java 17
   * Hibernate 6
   * JPA 2
   * JDBC 6
 * Angular 18
-  * Material Design
-  * chart.js
-  * ng-charts
+  * Material Design 3
+  * chart.js 4
+  * ng-charts 4
   * axios
 
 #### Database Design
