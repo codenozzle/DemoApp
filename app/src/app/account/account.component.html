@@ -1,13 +1,74 @@
 <div>
   <h2>Accounts</h2>
-  <div *ngFor="let account of accounts">
-    <p>Account Number: {{ account.accountNumber }} - Balance: {{ account.balance }}</p>
-  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let account"> {{ account.id }} </td>
+    </ng-container>
 
-  <h3>Add New Account</h3>
-  <form (ngSubmit)="createAccount()">
-    <label>Account Number: <input [(ngModel)]="newAccount.accountNumber" name="accountNumber"></label>
-    <label>Balance: <input [(ngModel)]="newAccount.balance" name="balance" description="number"></label>
-    <button description="submit">Add Account</button>
+    <!-- Credit Card Number Column -->
+    <ng-container matColumnDef="creditCardNumber">
+      <th mat-header-cell *matHeaderCellDef> Credit Card Number </th>
+      <td mat-cell *matCellDef="let account"> {{ account.creditCardNumber }} </td>
+    </ng-container>
+
+    <!-- Credit Card Type Column -->
+    <ng-container matColumnDef="creditCardType">
+      <th mat-header-cell *matHeaderCellDef> Credit Card Type </th>
+      <td mat-cell *matCellDef="let account"> {{ account.creditCardType }} </td>
+    </ng-container>
+
+    <!-- Balance Column -->
+    <ng-container matColumnDef="balance">
+      <th mat-header-cell *matHeaderCellDef> Balance </th>
+      <td mat-cell *matCellDef="let account"> {{ account.balance }} </td>
+    </ng-container>
+
+    <!-- Spending Limit Column -->
+    <ng-container matColumnDef="spendingLimit">
+      <th mat-header-cell *matHeaderCellDef> Spending Limit </th>
+      <td mat-cell *matCellDef="let account"> {{ account.spendingLimit }} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let account">
+        <button mat-button color="primary" (click)="editAccount(account)">Edit</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons=""
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+
+  <h3>{{ editingAccount ? 'Edit Account' : 'Add New Account' }}</h3>
+  <form (ngSubmit)="createAccount()" class="account-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Credit Card Number</mat-label>
+      <input matInput [(ngModel)]="newAccount.creditCardNumber" name="creditCardNumber">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Credit Card Type</mat-label>
+      <input matInput [(ngModel)]="newAccount.creditCardType" name="creditCardType">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Balance</mat-label>
+      <input matInput [(ngModel)]="newAccount.balance" name="balance" type="number">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Spending Limit</mat-label>
+      <input matInput [(ngModel)]="newAccount.spendingLimit" name="spendingLimit" type="number">
+    </mat-form-field>
+    <div class="form-buttons">
+      <button mat-raised-button color="primary" type="submit">{{ editingAccount ? 'Update' : 'Add' }} Account</button>
+      <button mat-raised-button color="warn" type="button" *ngIf="editingAccount" (click)="cancelEdit()">Cancel</button>
+    </div>
   </form>
 </div>

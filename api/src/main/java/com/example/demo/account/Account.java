@@ -15,7 +15,7 @@ public class Account {
     private Double balance;
     private Double spendingLimit;
 
-    @ManyToMany
+    /*@ManyToMany
     @JoinTable(
         name = "customer_account",
         joinColumns = @JoinColumn(name = "account_id"),
@@ -24,7 +24,7 @@ public class Account {
     private List<Customer> customers;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    private List<Transaction> transactions;
+    private List<Transaction> transactions;*/
 
     // Getters, Setters, Constructors
     public Long getId() {
@@ -43,7 +43,7 @@ public class Account {
         this.balance = balance;
     }
 
-    public List<Customer> getCustomers() {
+    /*public List<Customer> getCustomers() {
         return customers;
     }
 
@@ -57,7 +57,7 @@ public class Account {
 
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
-    }
+    }*/
 
     public Double getSpendingLimit() {
         return spendingLimit;

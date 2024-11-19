@@ -1,8 +1,7 @@
-import { Customer } from './customer.model';
-
 export interface Account {
     id: number;
-    accountNumber: string;
+    creditCardNumber: string;
+    creditCardType: string;
     balance: number;
-    customers: Customer[];
+    spendingLimit: number;
 }

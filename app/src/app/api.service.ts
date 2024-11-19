@@ -48,4 +48,8 @@ export class ApiService {
   updateCustomer(customer: Customer): Observable<Customer> {
     return this.http.put<Customer>(`${this.baseUrl}/customers/${customer.id}`, customer);
   }
+
+  updateAccount(account: Account): Observable<Account> {
+    return this.http.put<Account>(`${this.baseUrl}/accounts/${account.id}`, account);
+  }
 }
