@@ -1,0 +1,30 @@
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row {
+  padding: 0 0 10px 5px;
+  font-size: larger;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.customer-detail-top {
+  border-top: 5px solid #25313d;
+}
+
+.mat-mdc-card-header {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}

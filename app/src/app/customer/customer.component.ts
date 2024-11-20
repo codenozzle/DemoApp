@@ -3,6 +3,7 @@ import { ApiService } from '../api.service';
 import { Customer } from '../models/customer.model';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatPaginator} from "@angular/material/paginator";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer',
@@ -17,7 +18,7 @@ export class CustomerComponent implements OnInit {
   editingCustomer: Customer | null = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.getCustomers();
@@ -57,5 +58,9 @@ export class CustomerComponent implements OnInit {
   cancelEdit(): void {
     this.editingCustomer = null;
     this.newCustomer = { id: 0, name: '' };
+  }
+
+  viewCustomerOverview(customerId: number): void {
+    this.router.navigate(['/customer-overview', customerId]);
   }
 }

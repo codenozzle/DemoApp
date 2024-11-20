@@ -6,6 +6,7 @@ import { Account } from './models/account.model';
 import { Transaction } from './models/transaction.model';
 import {TransactionCountHistory} from "./models/transactionCountHistory.model";
 import {TransactionAmountHistory} from "./models/transactionAmountHistory.model";
+import {CustomerDetail} from "./models/customerDetail.model";
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -51,5 +52,13 @@ export class ApiService {
 
   updateAccount(account: Account): Observable<Account> {
     return this.http.put<Account>(`${this.baseUrl}/accounts/${account.id}`, account);
+  }
+
+  updateTransaction(transaction: Transaction): Observable<Transaction> {
+    return this.http.put<Transaction>(`${this.baseUrl}/transactions/${transaction.id}`, transaction);
+  }
+
+  getCustomerDetails(customerId: number): Observable<CustomerDetail> {
+    return this.http.get<CustomerDetail>(`${this.baseUrl}/customers/${customerId}/details`);
   }
 }

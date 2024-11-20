@@ -1,14 +1,70 @@
 <div>
   <h2>Transactions</h2>
-  <div *ngFor="let transaction of transactions">
-    <p>Type: {{ transaction.description }} - Amount: {{ transaction.amount }} - Timestamp: {{ transaction.timestamp }}</p>
-  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let transaction"> {{ transaction.id }} </td>
+    </ng-container>
 
-  <h3>Add New Transaction</h3>
-  <form (ngSubmit)="createTransaction()">
-    <label>Type: <input [(ngModel)]="newTransaction.description" name="description"></label>
-    <label>Amount: <input [(ngModel)]="newTransaction.amount" name="amount" description="number"></label>
-    <label>Timestamp: <input [(ngModel)]="newTransaction.timestamp" name="timestamp" description="datetime-local"></label>
-    <button description="submit">Add Transaction</button>
+    <!-- Amount Column -->
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td mat-cell *matCellDef="let transaction"> {{ transaction.amount }} </td>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let transaction"> {{ transaction.description }} </td>
+    </ng-container>
+
+    <!-- Timestamp Column -->
+    <ng-container matColumnDef="timestamp">
+      <th mat-header-cell *matHeaderCellDef> Timestamp </th>
+      <td mat-cell *matCellDef="let transaction"> {{ transaction.timestamp }} </td>
+    </ng-container>
+
+    <!-- Account ID Column -->
+    <ng-container matColumnDef="accountId">
+      <th mat-header-cell *matHeaderCellDef> Account ID</th>
+      <td mat-cell *matCellDef="let transaction"> {{ transaction.accountId }} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let transaction">
+        <button mat-button color="primary" (click)="editTransaction(transaction)">Edit</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons=""
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+
+  <h3>{{ editingTransaction ? 'Edit Transaction' : 'Add New Transaction' }}</h3>
+  <form (ngSubmit)="createTransaction()" class="transaction-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Amount</mat-label>
+      <input matInput [(ngModel)]="newTransaction.amount" name="amount" type="number">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)]="newTransaction.description" name="description">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Timestamp</mat-label>
+      <input matInput [(ngModel)]="newTransaction.timestamp" name="timestamp" type="datetime-local">
+    </mat-form-field>
+    <div class="form-buttons">
+      <button mat-raised-button color="primary" type="submit">{{ editingTransaction ? 'Update' : 'Add' }} Transaction</button>
+      <button mat-raised-button color="warn" type="button" *ngIf="editingTransaction" (click)="cancelEdit()">Cancel</button>
+    </div>
   </form>
 </div>

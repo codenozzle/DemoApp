@@ -16,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {NgChartsModule} from "ng2-charts";
 import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatCell,
   MatCellDef,
@@ -26,6 +27,9 @@ import {
   MatTable
 } from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
+import {CustomerOverviewComponent} from "./customer-overview/customer-overview.component";
+import {MatTab, MatTabGroup, MatTabsModule} from "@angular/material/tabs";
+import {MatDivider} from "@angular/material/divider";
 
 @NgModule({
   declarations: [
@@ -33,7 +37,8 @@ import {MatPaginator} from "@angular/material/paginator";
     CustomerComponent,
     AccountComponent,
     TransactionComponent,
-    DashboardComponent
+    DashboardComponent,
+    CustomerOverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +66,12 @@ import {MatPaginator} from "@angular/material/paginator";
     MatRowDef,
     MatHeaderRowDef,
     MatPaginator,
-    MatCardHeader
+    MatCardHeader,
+    MatTabGroup,
+    MatTab,
+    MatTabsModule,
+    MatDivider,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

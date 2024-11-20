@@ -1,8 +1,13 @@
 package com.example.demo.customer;
 
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 import com.example.demo.core.*;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -24,31 +29,12 @@ public class CustomerDAO extends BaseDAO {
         return getTemplate().query(sql, SqlMapper::mapCustomerHistory);
     }
 
-    public List<TransactionCountHistory> getTransactionCountHistory() {
+
+    public Customer getCustomerById(Long customerId) {
         String sql = """
-                select a.credit_card_type, count(t.id) as num_of_transactions
-                from
-                    account a join transaction t on a.id = t.account_id
-                group by
-                    a.credit_card_type
-                order by
-                    a.credit_card_type
+                select * from customer c where c.id = :customerId
                 """;
-        return getTemplate().query(sql, SqlMapper::mapTransactionCountHistory);
+        SqlParameterSource params = new MapSqlParameterSource("customerId", customerId);
+        return getTemplate().queryForObject(sql, params, (rs, rowNum) -> SqlMapper.mapCustomer(rs));
     }
-
-    public List<TransactionAmountHistory> getTransactionAmountHistory() {
-        String sql = """
-                select a.credit_card_type, sum(t.amount) as total
-                from
-                    account a join transaction t on a.id = t.account_id
-                group by
-                    a.credit_card_type
-                order by
-                    a.credit_card_type
-                """;
-        return getTemplate().query(sql, SqlMapper::mapTransactionAmountHistory);
-    }
-
-
 }
