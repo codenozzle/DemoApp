@@ -50,4 +50,14 @@ export class CustomerOverviewComponent implements OnInit {
       this.getCustomerDetails(this.customerDetail.customer.id);
     });
   }
+
+  getClass(creditRatio: number) {
+    if (creditRatio > 1) {
+      return 'danger';
+    } else if (creditRatio > 0.5) {
+      return 'warning';
+    } else {
+      return 'nominal';
+    }
+  }
 }

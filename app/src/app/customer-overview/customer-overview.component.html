@@ -16,7 +16,7 @@
         <div class="column">
           <div class="row">Total balance: {{customerDetail.totalBalance | currency:'USD':'symbol':'1.2-2' }}</div>
           <div class="row">Total spending limit: {{customerDetail.totalSpendingLimit | currency:'USD':'symbol':'1.2-2' }}</div>
-          <div class="row">Credit utilization: {{ customerDetail.creditRatio | percent:'2.2-2' }}</div>
+          <div class="row" [ngClass]="getClass(customerDetail.creditRatio)">Credit utilization: {{ customerDetail.creditRatio | percent:'2.2-2' }}</div>
         </div>
       </div>
       <mat-divider></mat-divider>
