@@ -59,7 +59,7 @@ public class CustomerService {
     public CustomerDetail getCustomerDetail(Long customerId) {
         List<Account> accounts = accountService.getAccountsByCustomerId(customerId);
         List<Transaction> transactions = transactionService.getTransactionsByCustomerId(customerId);
-        Double totalBalance = accounts.stream().mapToDouble(Account::getBalance).sum();
+        Double totalBalance = transactions.stream().mapToDouble(Transaction::getAmount).sum();
         Double totalSpendingLimit = accounts.stream().mapToDouble(Account::getSpendingLimit).sum();
         Customer customer = customerDAO.getCustomerById(customerId);
 

@@ -66,4 +66,8 @@ export class ApiService {
   createCustomerWizard(newCustomer: CustomerWizardModel): Observable<CustomerWizardModel> {
     return this.http.post<CustomerWizardModel>(`${this.baseUrl}/customer/onboard`, newCustomer);
   }
+
+  importTransactions(accountId: number) {
+    return this.http.post<any>(`${this.baseUrl}/transaction/${accountId}/import`, {});
+  }
 }

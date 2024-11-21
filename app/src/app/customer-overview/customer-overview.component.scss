@@ -28,4 +28,7 @@
   display: table-cell;
   max-width: 600px;
   padding-bottom: 12px;
+  .mdc-button {
+    margin-right: 10px !important;
+  }
 }

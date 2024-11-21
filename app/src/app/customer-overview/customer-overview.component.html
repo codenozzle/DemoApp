@@ -1,6 +1,6 @@
 <div *ngIf="customerDetail">
   <div class="button-row">
-    <button mat-raised-button (click)="goToCustomers()">Back</button>
+    <button mat-raised-button (click)="goToCustomers()"><mat-icon>arrow_back</mat-icon>Back to Customers</button>
   </div>
   <mat-card class="customer-detail-top">
     <mat-card-header>
@@ -41,8 +41,16 @@
               <td mat-cell *matCellDef="let account"> {{ account.balance | currency:'USD':'symbol':'1.2-2' }} </td>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="['creditCardNumber', 'creditCardType', 'balance']"></tr>
-            <tr mat-row *matRowDef="let row; columns: ['creditCardNumber', 'creditCardType', 'balance'];"></tr>
+            <!-- Actions Column -->
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef> Actions </th>
+              <td mat-cell *matCellDef="let account">
+                <button mat-button color="primary" (click)="importTransactions(account)"><mat-icon>cloud_download</mat-icon>Import Transactions</button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="['creditCardNumber', 'creditCardType', 'balance', 'actions']"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['creditCardNumber', 'creditCardType', 'balance', 'actions'];"></tr>
           </table>
           <mat-paginator [pageSizeOptions]="[5, 10, 20]"
                          showFirstLastButtons=""

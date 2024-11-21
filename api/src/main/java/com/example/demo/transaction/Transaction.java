@@ -12,10 +12,7 @@ public class Transaction {
     private Double amount;
     private String description;
     private LocalDateTime timestamp;
-
-    @ManyToOne
-    @JoinColumn(name = "account_id")
-    private Account account;
+    private Long accountId;
 
     public Long getId() {
         return id;
@@ -49,11 +46,11 @@ public class Transaction {
         this.timestamp = timestamp;
     }
 
-    public Account getAccount() {
-        return account;
+    public Long getAccountId() {
+        return accountId;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
     }
 }

@@ -44,4 +44,10 @@ export class CustomerOverviewComponent implements OnInit {
   goToCustomers() {
     this.router.navigate(['/customers']);
   }
+
+  importTransactions(account: Account) {
+    this.apiService.importTransactions(account.id).subscribe(success => {
+      this.getCustomerDetails(this.customerDetail.customer.id);
+    });
+  }
 }
