@@ -15,50 +15,50 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getCustomers(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(`${this.baseUrl}/customers`);
+    return this.http.get<Customer[]>(`${this.baseUrl}/customer`);
   }
 
   createCustomer(customer: Customer): Observable<Customer> {
-    return this.http.post<Customer>(`${this.baseUrl}/customers`, customer);
+    return this.http.post<Customer>(`${this.baseUrl}/customer`, customer);
   }
 
   getAccounts(): Observable<Account[]> {
-    return this.http.get<Account[]>(`${this.baseUrl}/accounts`);
+    return this.http.get<Account[]>(`${this.baseUrl}/account`);
   }
 
   createAccount(account: Account): Observable<Account> {
-    return this.http.post<Account>(`${this.baseUrl}/accounts`, account);
+    return this.http.post<Account>(`${this.baseUrl}/account`, account);
   }
 
   getTransactions(): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(`${this.baseUrl}/transactions`);
+    return this.http.get<Transaction[]>(`${this.baseUrl}/transaction`);
   }
 
   createTransaction(transaction: Transaction): Observable<Transaction> {
-    return this.http.post<Transaction>(`${this.baseUrl}/transactions`, transaction);
+    return this.http.post<Transaction>(`${this.baseUrl}/transaction`, transaction);
   }
 
   getTransactionCountHistory(): Observable<TransactionCountHistory[]> {
-    return this.http.get<TransactionCountHistory[]>(`${this.baseUrl}/customers/countHistory`);
+    return this.http.get<TransactionCountHistory[]>(`${this.baseUrl}/customer/countHistory`);
   }
 
   getTransactionAmountHistory(): Observable<TransactionAmountHistory[]> {
-    return this.http.get<TransactionAmountHistory[]>(`${this.baseUrl}/customers/amountHistory`);
+    return this.http.get<TransactionAmountHistory[]>(`${this.baseUrl}/customer/amountHistory`);
   }
 
   updateCustomer(customer: Customer): Observable<Customer> {
-    return this.http.put<Customer>(`${this.baseUrl}/customers/${customer.id}`, customer);
+    return this.http.put<Customer>(`${this.baseUrl}/customer/${customer.id}`, customer);
   }
 
   updateAccount(account: Account): Observable<Account> {
-    return this.http.put<Account>(`${this.baseUrl}/accounts/${account.id}`, account);
+    return this.http.put<Account>(`${this.baseUrl}/account/${account.id}`, account);
   }
 
   updateTransaction(transaction: Transaction): Observable<Transaction> {
-    return this.http.put<Transaction>(`${this.baseUrl}/transactions/${transaction.id}`, transaction);
+    return this.http.put<Transaction>(`${this.baseUrl}/transaction/${transaction.id}`, transaction);
   }
 
   getCustomerDetails(customerId: number): Observable<CustomerDetail> {
-    return this.http.get<CustomerDetail>(`${this.baseUrl}/customers/${customerId}/details`);
+    return this.http.get<CustomerDetail>(`${this.baseUrl}/customer/${customerId}/details`);
   }
 }
