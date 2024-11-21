@@ -30,6 +30,10 @@ import {MatPaginator} from "@angular/material/paginator";
 import {CustomerOverviewComponent} from "./customer-overview/customer-overview.component";
 import {MatTab, MatTabGroup, MatTabsModule} from "@angular/material/tabs";
 import {MatDivider} from "@angular/material/divider";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptor } from './loading.interceptor';
+import {MatProgressBar} from "@angular/material/progress-bar";
 
 @NgModule({
   declarations: [
@@ -71,9 +75,13 @@ import {MatDivider} from "@angular/material/divider";
     MatTab,
     MatTabsModule,
     MatDivider,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatProgressSpinner,
+    MatProgressBar
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

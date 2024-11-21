@@ -6,7 +6,7 @@
   <a mat-button routerLink="/accounts" [routerLinkActive]="['active']">Accounts</a>
   <a mat-button routerLink="/transactions" [routerLinkActive]="['active']">Transactions</a>
 </mat-toolbar>
-
+<mat-progress-bar *ngIf="loadingService.isLoading | async" mode="indeterminate"></mat-progress-bar>
 <div class="content">
   <router-outlet></router-outlet>
 </div>
