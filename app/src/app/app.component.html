@@ -1,10 +1,10 @@
 <mat-toolbar color="primary">
   <img src="/assets/logo3.png" alt="logo" height="60">
   <span class="spacer"></span>
-  <a mat-button routerLink="/dashboard">Dashboard</a>
-  <a mat-button routerLink="/customers">Customers</a>
-  <a mat-button routerLink="/accounts">Accounts</a>
-  <a mat-button routerLink="/transactions">Transactions</a>
+  <a mat-button routerLink="/dashboard" [routerLinkActive]="['active']">Dashboard</a>
+  <a mat-button routerLink="/customers" [routerLinkActive]="['active']">Customers</a>
+  <a mat-button routerLink="/accounts" [routerLinkActive]="['active']">Accounts</a>
+  <a mat-button routerLink="/transactions" [routerLinkActive]="['active']">Transactions</a>
 </mat-toolbar>
 
 <div class="content">

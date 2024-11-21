@@ -59,8 +59,4 @@ export class CustomerComponent implements OnInit {
     this.editingCustomer = null;
     this.newCustomer = { id: 0, name: '' };
   }
-
-  viewCustomerOverview(customerId: number): void {
-    this.router.navigate(['/customer-overview', customerId]);
-  }
 }
