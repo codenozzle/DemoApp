@@ -22,6 +22,14 @@ public class TransactionService {
         return transactionRepository.save(transaction);
     }
 
+    public Transaction updateTransaction(Long transactionId, Transaction transaction) {
+        Transaction transactionToUpdate = transactionRepository.getReferenceById(transactionId);
+        transactionToUpdate.setAmount(transaction.getAmount());
+        transactionToUpdate.setDescription(transaction.getDescription());
+        transactionToUpdate.setTimestamp(transaction.getTimestamp());
+        return transactionRepository.save(transactionToUpdate);
+    }
+
     public List<Transaction> getAllTransactions() {
         return transactionRepository.findAll();
     }

@@ -24,4 +24,13 @@ public class AccountService {
     public List<Account> getAccountsByCustomerId(Long customerId) {
         return accountDAO.getAccountsByCustomerId(customerId);
     }
+
+    public Account updateAccount(Long accountId, Account account) {
+        Account accountToUpdate = accountRepository.getReferenceById(accountId);
+        accountToUpdate.setBalance(account.getBalance());
+        accountToUpdate.setCreditCardNumber(account.getCreditCardNumber());
+        accountToUpdate.setCreditCardType(account.getCreditCardType());
+        accountToUpdate.setSpendingLimit(account.getSpendingLimit());
+        return accountRepository.save(accountToUpdate);
+    }
 }
