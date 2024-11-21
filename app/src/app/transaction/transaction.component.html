@@ -48,23 +48,31 @@
                  aria-label="Select page of elements">
   </mat-paginator>
 
-  <h3>{{ editingTransaction ? 'Edit Transaction' : 'Add New Transaction' }}</h3>
-  <form (ngSubmit)="createTransaction()" class="transaction-form">
-    <mat-form-field appearance="fill">
-      <mat-label>Amount</mat-label>
-      <input matInput [(ngModel)]="newTransaction.amount" name="amount" type="number">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Description</mat-label>
-      <input matInput [(ngModel)]="newTransaction.description" name="description">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Timestamp</mat-label>
-      <input matInput [(ngModel)]="newTransaction.timestamp" name="timestamp" type="datetime-local">
-    </mat-form-field>
-    <div class="form-buttons">
-      <button mat-raised-button color="primary" type="submit">{{ editingTransaction ? 'Update' : 'Add' }} Transaction</button>
-      <button mat-raised-button color="warn" type="button" *ngIf="editingTransaction" (click)="cancelEdit()">Cancel</button>
-    </div>
-  </form>
+  <div class="transaction-form-container" *ngIf="editingTransaction">
+    <mat-card>
+      <mat-card-header>
+        <h3>{{ editingTransaction ? 'Edit Transaction' : 'Add New Transaction' }}</h3>
+      </mat-card-header>
+      <mat-card-content>
+        <form (ngSubmit)="createTransaction()" class="transaction-form">
+          <mat-form-field appearance="fill">
+            <mat-label>Amount</mat-label>
+            <input matInput [(ngModel)]="newTransaction.amount" name="amount" type="number">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <input matInput [(ngModel)]="newTransaction.description" name="description">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Timestamp</mat-label>
+            <input matInput [(ngModel)]="newTransaction.timestamp" name="timestamp" type="datetime-local">
+          </mat-form-field>
+          <div class="form-buttons">
+            <button mat-raised-button color="primary" type="submit">{{ editingTransaction ? 'Update' : 'Add' }} Transaction</button>
+            <button mat-raised-button color="warn" type="button" *ngIf="editingTransaction" (click)="cancelEdit()">Cancel</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

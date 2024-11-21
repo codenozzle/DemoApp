@@ -32,7 +32,7 @@
                  aria-label="Select page of elements">
   </mat-paginator>
 
-  <div class="customer-form-container">
+  <div class="customer-form-container" *ngIf="editingCustomer">
     <mat-card>
       <mat-card-header>
         <h3>{{ editingCustomer ? 'Edit Customer' : 'Add New Customer' }}</h3>
