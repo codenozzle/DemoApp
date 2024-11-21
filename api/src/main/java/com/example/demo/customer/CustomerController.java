@@ -22,6 +22,11 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.createCustomer(customer));
     }
 
+    @PostMapping(path = "/onboard")
+    public ResponseEntity<CustomerWizard> onboardCustomer(@RequestBody CustomerWizard customerWizard) {
+        return ResponseEntity.ok(customerService.onboardCustomer(customerWizard));
+    }
+
     @PutMapping(path = "/{customerId}")
     public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer, @PathVariable Long customerId) {
         return ResponseEntity.ok(customerService.updateCustomer(customerId, customer));

@@ -1,11 +1,13 @@
 package com.example.demo.customer;
 
 import com.example.demo.account.Account;
+import com.example.demo.account.AccountRepository;
 import com.example.demo.account.AccountService;
 import com.example.demo.transaction.Transaction;
 import com.example.demo.transaction.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,6 +27,8 @@ public class CustomerService {
 
     @Autowired
     private CustomerDAO customerDAO;
+    @Autowired
+    private AccountRepository accountRepository;
 
     public Customer createCustomer(Customer customer) {
         return customerRepository.save(customer);
@@ -69,5 +73,34 @@ public class CustomerService {
         customerDetail.setTotalSpendingLimit(totalSpendingLimit);
         customerDetail.setCreditRatio(totalBalance/totalSpendingLimit);
         return customerDetail;
+    }
+
+    @Transactional
+    public CustomerWizard onboardCustomer(CustomerWizard customerWizard) {
+        // Create the Customer object first
+        Customer newCustomer = generateCustomerFromWizard(customerWizard);
+
+        // Create the Account object second
+        Account newAccount = generateAccountFromWizard(customerWizard);
+
+        // Link the Customer and Account objects
+        customerDAO.linkCustomerAndAccount(newCustomer.getId(), newAccount.getId());
+        customerWizard.setCustomerId(newCustomer.getId());
+        return customerWizard;
+    }
+
+    private Account generateAccountFromWizard(CustomerWizard customerWizard) {
+        Account account = new Account();
+        account.setCreditCardNumber(customerWizard.getCreditCardNumber());
+        account.setCreditCardType(customerWizard.getCreditCardType());
+        account.setBalance(customerWizard.getBalance());
+        account.setSpendingLimit(customerWizard.getSpendingLimit());
+        return accountRepository.save(account);
+    }
+
+    private Customer generateCustomerFromWizard(CustomerWizard customerWizard) {
+        Customer customer = new Customer();
+        customer.setName(customerWizard.getName());
+        return customerRepository.save(customer);
     }
 }

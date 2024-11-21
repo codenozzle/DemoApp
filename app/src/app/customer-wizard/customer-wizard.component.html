@@ -1,0 +1,69 @@
+<mat-card>
+  <mat-card-header>
+    <h3>Create new customer with account</h3>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-stepper orientation="horizontal" [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="nameFormGroup">
+        <form [formGroup]="nameFormGroup">
+          <ng-template matStepLabel>Fill out your name</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput name="name" formControlName="nameCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="creditCardFormGroup">
+        <form [formGroup]="creditCardFormGroup">
+          <ng-template matStepLabel>Fill out your credit card number</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Credit Card Number</mat-label>
+            <input matInput name="creditCardNumber" formControlName="creditCardCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="typeFormGroup">
+        <form [formGroup]="typeFormGroup">
+          <ng-template matStepLabel>Fill out your credit card type</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Credit Card Type</mat-label>
+            <input matInput name="creditCardType" formControlName="typeCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="spendingLimitFormGroup">
+        <form [formGroup]="spendingLimitFormGroup">
+          <ng-template matStepLabel>Fill out your spending limit</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Spending Limit</mat-label>
+            <input matInput name="spendingLimit" type="number" formControlName="spendingLimitCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Submit</ng-template>
+        <p>You are almost done.</p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+          <button mat-button (click)="createCustomerWithAccount()">Submit</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </mat-card-content>
+</mat-card>

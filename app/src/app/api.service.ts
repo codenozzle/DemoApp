@@ -7,6 +7,7 @@ import { Transaction } from './models/transaction.model';
 import {TransactionCountHistory} from "./models/transactionCountHistory.model";
 import {TransactionAmountHistory} from "./models/transactionAmountHistory.model";
 import {CustomerDetail} from "./models/customerDetail.model";
+import {CustomerWizardModel} from "./models/customerWizard.model";
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -60,5 +61,9 @@ export class ApiService {
 
   getCustomerDetails(customerId: number): Observable<CustomerDetail> {
     return this.http.get<CustomerDetail>(`${this.baseUrl}/customer/${customerId}/details`);
+  }
+
+  createCustomerWizard(newCustomer: CustomerWizardModel): Observable<CustomerWizardModel> {
+    return this.http.post<CustomerWizardModel>(`${this.baseUrl}/customer/onboard`, newCustomer);
   }
 }

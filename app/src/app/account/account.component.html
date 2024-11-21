@@ -48,27 +48,35 @@
                  aria-label="Select page of elements">
   </mat-paginator>
 
-  <h3>{{ editingAccount ? 'Edit Account' : 'Add New Account' }}</h3>
-  <form (ngSubmit)="createAccount()" class="account-form">
-    <mat-form-field appearance="fill">
-      <mat-label>Credit Card Number</mat-label>
-      <input matInput [(ngModel)]="newAccount.creditCardNumber" name="creditCardNumber">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Credit Card Type</mat-label>
-      <input matInput [(ngModel)]="newAccount.creditCardType" name="creditCardType">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Balance</mat-label>
-      <input matInput [(ngModel)]="newAccount.balance" name="balance" type="number">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Spending Limit</mat-label>
-      <input matInput [(ngModel)]="newAccount.spendingLimit" name="spendingLimit" type="number">
-    </mat-form-field>
-    <div class="form-buttons">
-      <button mat-raised-button color="primary" type="submit">{{ editingAccount ? 'Update' : 'Add' }} Account</button>
-      <button mat-raised-button color="warn" type="button" *ngIf="editingAccount" (click)="cancelEdit()">Cancel</button>
-    </div>
-  </form>
+  <div class="account-form-container">
+    <mat-card>
+      <mat-card-header>
+        <h3>{{ editingAccount ? 'Edit Account' : 'Add New Account' }}</h3>
+      </mat-card-header>
+      <mat-card-content>
+        <form (ngSubmit)="createAccount()" class="account-form">
+          <mat-form-field appearance="fill">
+            <mat-label>Credit Card Number</mat-label>
+            <input matInput [(ngModel)]="newAccount.creditCardNumber" name="creditCardNumber">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Credit Card Type</mat-label>
+            <input matInput [(ngModel)]="newAccount.creditCardType" name="creditCardType">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Balance</mat-label>
+            <input matInput [(ngModel)]="newAccount.balance" name="balance" type="number">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Spending Limit</mat-label>
+            <input matInput [(ngModel)]="newAccount.spendingLimit" name="spendingLimit" type="number">
+          </mat-form-field>
+          <div class="form-buttons">
+            <button mat-raised-button color="primary" type="submit">{{ editingAccount ? 'Update' : 'Add' }} Account</button>
+            <button mat-raised-button color="warn" type="button" *ngIf="editingAccount" (click)="cancelEdit()">Cancel</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

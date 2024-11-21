@@ -59,4 +59,8 @@ export class CustomerComponent implements OnInit {
     this.editingCustomer = null;
     this.newCustomer = { id: 0, name: '' };
   }
+
+  goToWizard() {
+    this.router.navigate(['/customer-wizard/']);
+  }
 }

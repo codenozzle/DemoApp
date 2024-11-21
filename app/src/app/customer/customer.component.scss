@@ -11,3 +11,10 @@
   display: flex;
   gap: 16px;
 }
+
+.button-row {
+  display: table-cell;
+  max-width: 600px;
+  padding-bottom: 12px;
+  float: right;
+}

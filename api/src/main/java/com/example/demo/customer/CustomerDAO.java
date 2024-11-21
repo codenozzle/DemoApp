@@ -1,13 +1,9 @@
 package com.example.demo.customer;
 
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 import com.example.demo.core.*;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -36,5 +32,13 @@ public class CustomerDAO extends BaseDAO {
                 """;
         SqlParameterSource params = new MapSqlParameterSource("customerId", customerId);
         return getTemplate().queryForObject(sql, params, (rs, rowNum) -> SqlMapper.mapCustomer(rs));
+    }
+
+    public void linkCustomerAndAccount(Long customerId, Long accountId) {
+        String sql = "INSERT INTO customer_account(customer_id, account_id) VALUES (:customerId, :accountId)";
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("customerId", customerId)
+                .addValue("accountId", accountId);
+        getTemplate().update(sql, params);
     }
 }

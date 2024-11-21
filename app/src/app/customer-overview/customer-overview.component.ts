@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { ApiService } from '../api.service';
 import {CustomerDetail} from "../models/customerDetail.model";
 import {MatPaginator} from "@angular/material/paginator";
@@ -19,7 +19,7 @@ export class CustomerOverviewComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatPaginator) paginator2: MatPaginator;
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService) {}
+  constructor(private route: ActivatedRoute, private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     const customerId = this.route.snapshot.paramMap.get('id');
@@ -41,7 +41,7 @@ export class CustomerOverviewComponent implements OnInit {
     });
   }
 
-  back() {
-    window.history.back();
+  goToCustomers() {
+    this.router.navigate(['/customers']);
   }
 }

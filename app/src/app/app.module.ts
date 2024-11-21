@@ -34,6 +34,9 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './loading.interceptor';
 import {MatProgressBar} from "@angular/material/progress-bar";
+import {MatOption, MatSelect} from "@angular/material/select";
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -77,7 +80,11 @@ import {MatProgressBar} from "@angular/material/progress-bar";
     MatDivider,
     BrowserAnimationsModule,
     MatProgressSpinner,
-    MatProgressBar
+    MatProgressBar,
+    MatSelect,
+    MatOption,
+    MatFormFieldModule,
+    MatStepperModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }

@@ -17,7 +17,6 @@ public class Transaction {
     @JoinColumn(name = "account_id")
     private Account account;
 
-    // Getters, Setters, Constructors
     public Long getId() {
         return id;
     }

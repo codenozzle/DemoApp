@@ -4,9 +4,11 @@ import { CustomerComponent } from './customer/customer.component';
 import { AccountComponent } from './account/account.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import {CustomerOverviewComponent} from "./customer-overview/customer-overview.component";
+import { CustomerOverviewComponent } from "./customer-overview/customer-overview.component";
+import { CustomerWizardComponent } from "./customer-wizard/customer-wizard.component";
 
 const routes: Routes = [
+  { path: 'customer-wizard', component: CustomerWizardComponent },
   { path: 'customer-overview/:id', component: CustomerOverviewComponent },
   { path: 'customers', component: CustomerComponent },
   { path: 'accounts', component: AccountComponent },
